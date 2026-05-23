@@ -52,13 +52,15 @@ import { ToastService } from '../../core/services/toast.service';
                 <div class="form-error">Must be >= 0</div>
               }
             </div>
-            <div class="col-md-3">
-              <label class="form-label">Available copies</label>
-              <input type="number" min="0" class="form-control" formControlName="availableCopies">
-              @if (showError('availableCopies')) {
-                <div class="form-error">Must be >= 0</div>
-              }
-            </div>
+            @if (id()) {
+              <div class="col-md-3">
+                <label class="form-label">Available copies</label>
+                <input type="number" min="0" class="form-control" formControlName="availableCopies">
+                @if (showError('availableCopies')) {
+                  <div class="form-error">Must be >= 0</div>
+                }
+              </div>
+            }
             <div class="col-md-6">
               <label class="form-label">Shelf location</label>
               <input class="form-control" formControlName="shelfLocation">
@@ -111,6 +113,11 @@ export class BookFormComponent implements OnInit {
           availableCopies: book.availableCopies,
           shelfLocation: book.shelfLocation ?? ''
         });
+      });
+    } else {
+      this.form.controls.availableCopies.disable();
+      this.form.controls.totalCopies.valueChanges.subscribe(total => {
+        this.form.controls.availableCopies.setValue(total ?? 0, { emitEvent: false });
       });
     }
   }
