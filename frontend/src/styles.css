@@ -1,0 +1,8 @@
+html, body { height: 100%; }
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.app-container { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.toast-stack { position: fixed; top: 16px; right: 16px; z-index: 1080; min-width: 280px; }
+.empty-state { padding: 32px; text-align: center; color: #6c757d; }
+.form-error { color: #dc3545; font-size: 0.85rem; }
+.status-badge { font-size: 0.75rem; }
